@@ -68,18 +68,20 @@ public class BookService {
         public BookModel getBookDetails(String worksId) {
             
             String url = Constants.OPEN_LIBRARY_BOOK_ENDPOINT + worksId + (".json");
-            
-            try (InputStream is = new ByteArrayInputStream(body.getBytes())) {
-            
-            JsonReader reader = Json.createReader(is);
             RestTemplate template = new RestTemplate();
             RequestEntity<Void> req = RequestEntity.get(url).build();
             ResponseEntity<String> resp = template.exchange(req, String.class);
-            JsonObject jsonObj = reader.readObject();
             
+            try (InputStream is = new ByteArrayInputStream(resp.getBody().getBytes())) {
+            
+            JsonReader reader = Json.createReader(is);
+            
+            JsonObject jsonObj = reader.readObject();
             return convertToBook(jsonObj);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
+           return null;
     }
 
     private BookModel convertToBook(JsonObject obj) {

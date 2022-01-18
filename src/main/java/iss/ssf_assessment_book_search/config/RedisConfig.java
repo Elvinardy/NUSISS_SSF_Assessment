@@ -35,7 +35,7 @@ public class RedisConfig {
         redisPassword = System.getenv(Constants.ENV_REDIS_PASSWORD);
     }
 
-    @Bean
+    @Bean(Constants.REDIS_REPO)
     public RedisTemplate<String, String> redisTemplateFactory() {
 
         final RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();

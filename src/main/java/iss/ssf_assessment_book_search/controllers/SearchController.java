@@ -39,6 +39,7 @@ public class SearchController {
             e.printStackTrace();
             return "error";
         }
+       
     }
 
 }
