@@ -1,6 +1,11 @@
 package iss.ssf_assessment_book_search.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import jakarta.json.Json;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 
 public class BookModel {
     
@@ -65,7 +70,15 @@ public class BookModel {
        bm.setBookKey(obj.getString("key"));
        bm.setTitle(obj.getString("title"));
        return bm;
-       
-            
         }
+
+    public static BookModel create(String jsonString) {
+        try(InputStream is = new ByteArrayInputStream(jsonString.getBytes())) {
+            final JsonReader reader = Json.createReader(is);
+            return create(reader.readObject());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new BookModel();
+    }
     }

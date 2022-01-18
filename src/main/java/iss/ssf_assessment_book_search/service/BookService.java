@@ -12,11 +12,11 @@ import iss.ssf_assessment_book_search.model.BookModel;
 public class BookService {
     
     // method to perfom the book search
-    public List<BookModel> getBook(String title) {
+    public List<BookModel> getBook(String bookTitle) {
        
         String url = UriComponentsBuilder
             .fromUriString(Constants.OPEN_LIBRARY_URL)
-            .queryParam("q", title.trim().replace(" ", "+"))
+            .queryParam("q", bookTitle.trim().replace(" ", "+"))
             .queryParam("field", "title+key")
             .queryParam("init", "20")
             .toUriString();
@@ -44,10 +44,7 @@ public class BookService {
             return docs.stream()
                 .map(v -> (JsonObject)v)    // map each Json object into an array
                 .map(BookModel::create)
-                .map(b ->{
-                    b.setTitle(title);
-                    b.setBookKey(bookKey);
-                }).collect(Collectors.toList());
+                .collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
         }

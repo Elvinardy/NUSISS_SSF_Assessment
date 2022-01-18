@@ -1,6 +1,5 @@
 package iss.ssf_assessment_book_search.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -27,17 +26,17 @@ public class SearchController {
 
     // Controller to handle submissions in view 1
     @GetMapping
-    public String BookSearch(@RequestParam(name = "title") String title, Model model) {
-        logger.info(">>> Title searched: " + title);
+    public String BookSearch(@RequestParam(name = "title") String bookTitle, Model model) {
+        logger.info(">>> Title searched: " + bookTitle);
 
         List<BookModel> bookList;
         try {
-            bookList = bookSvc.getBook(title.trim().replace(" ", "+")) 
-        } catch (IOException e) {
+            bookList = bookSvc.getBook(bookTitle.trim().replaceAll(" ", "+"));
+        } catch (Exception e) {
             e.printStackTrace();
             return "error";
         }
-        model.addAttribute("title", title);
+        model.addAttribute("title", bookTitle);
         model.addAttribute("results", bookList);
         return "result";
     }
