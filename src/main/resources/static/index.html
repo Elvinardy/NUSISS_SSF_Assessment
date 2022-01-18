@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Book Search</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"">
+    <link rel="stylesheet" th:href="@{bootstrap.min.css}">
 </head>
 <body>
     <div class="containter">
@@ -16,9 +16,9 @@
         </div>
         <div class="row">
             <div class="col" >
-                <form action="/" method="GET" class="d-flex justify-content-center">
+                <form action="/search" method="GET" class="d-flex justify-content-center">
                     <div class="input-group input-group-lg"></div>
-                    <input type="text" name="book" class="form-control"
+                    <input type="text" name="title" class="form-control"
                     placeholder="Enter a Book name" required="required">
                     <button type="submit" class="btn btn-warning">Search Books</button>
                 </form>

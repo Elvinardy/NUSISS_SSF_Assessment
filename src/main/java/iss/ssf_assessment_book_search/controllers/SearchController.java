@@ -32,13 +32,13 @@ public class SearchController {
         List<BookModel> bookList;
         try {
             bookList = bookSvc.getBook(bookTitle.trim().replaceAll(" ", "+"));
+            model.addAttribute("title", bookTitle);
+            model.addAttribute("results", bookList);
+            return "result";
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
         }
-        model.addAttribute("title", bookTitle);
-        model.addAttribute("results", bookList);
-        return "result";
     }
 
 }
