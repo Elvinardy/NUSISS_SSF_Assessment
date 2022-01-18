@@ -1,12 +1,15 @@
 package iss.ssf_assessment_book_search.model;
 
+import jakarta.json.JsonObject;
+
 public class BookModel {
     
     private String title;
     private String description;
     private String excerpt;
     private String thumbnail;
-    private boolean inCache = false;
+    private String bookKey;
+    private boolean inCache;
 
     
     public String getTitle() {
@@ -41,14 +44,28 @@ public class BookModel {
         this.thumbnail = thumbnail;
     }
 
-    public boolean inCache() {
-        return this.inCache = false;
+    public String getBookKey() {
+        return this.bookKey;
     }
 
+    public void setBookKey(String bookKey) {
+        this.bookKey = bookKey;
+    }
 
+    public boolean getInCache() {
+        return this.inCache;
+    }
 
+    public void setInCache (boolean inCache) {
+        this.inCache = inCache;
+    }
 
-
-
-
-}
+    public static BookModel create(JsonObject obj) {
+       final BookModel bm = new BookModel();
+       bm.setBookKey(obj.getString("key"));
+       bm.setTitle(obj.getString("title"));
+       return bm;
+       
+            
+        }
+    }
