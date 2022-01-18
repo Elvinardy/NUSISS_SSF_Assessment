@@ -39,7 +39,6 @@ public class BookService {
         final RequestEntity<Void> req = RequestEntity.get(url).build();
         final RestTemplate template = new RestTemplate();
         final ResponseEntity<String> resp = template.exchange(req, String.class);
-
         // if(resp.getStatusCode() != HttpStatus.OK) {
         //     throw new IllegalArgumentException(
         //         "Error: status code " + resp.getStatusCode().toString());
@@ -64,5 +63,16 @@ public class BookService {
         return Collections.emptyList();
         }
                 
+    /*     public BookModel getBookDetail(String worksId) throws IOException {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> resp = restTemplate.exchange(buildRequest(worksId), responseType)
+        } */
+        public String getBookDetails(String worksId) {
+            
+            String url = Constants.OPEN_LIBRARY_BOOK_ENDPOINT + worksId + (".json");
+            
+            
+        }
+
     }
 

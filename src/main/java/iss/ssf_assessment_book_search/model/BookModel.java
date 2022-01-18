@@ -14,7 +14,18 @@ public class BookModel {
     private String excerpt;
     private String thumbnail;
     private String bookKey;
-    private boolean inCache;
+    private boolean inCache = false;
+
+    public BookModel() {
+        
+    }
+
+    public BookModel(String[] bookParams) {
+        this.title = bookParams[0];
+        this.description = bookParams[1];
+        this.excerpt = bookParams[2];
+        this.inCache = true;
+    }
 
     
     public String getTitle() {
