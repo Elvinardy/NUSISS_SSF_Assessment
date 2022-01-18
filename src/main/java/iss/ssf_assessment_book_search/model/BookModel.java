@@ -17,7 +17,7 @@ public class BookModel {
     private boolean inCache = false;
 
     public BookModel() {
-        
+
     }
 
     public BookModel(String[] bookParams) {
@@ -91,5 +91,10 @@ public class BookModel {
             e.printStackTrace();
         }
         return new BookModel();
+    }
+
+    @Override
+    public String toString() {
+        return String.join("|", this.title, this.description, this.excerpt, this.thumbnail);
     }
     }
