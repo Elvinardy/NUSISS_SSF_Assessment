@@ -26,7 +26,7 @@ public class BookController {
             BookModel book = bookSvc.getBookDetails(worksId);
             model.addAttribute("worksId", worksId);
             model.addAttribute("book", book);
-            return "book";
+            return "details";
         } catch (Exception e) {
             e.printStackTrace();
             return "error";

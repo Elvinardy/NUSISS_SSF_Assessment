@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="row mt-4">
-            <div class="col-4"><img class="mx-auto d-block" th:if="${book.cover != 'NOT_FOUND"
+            <div class="col-4"><img class="mx-auto d-block" th:if="${book.thumbnail != 'NOT_FOUND'}"
                 th:src="|https://covers.openlibrary.org/b/id/${book.cover}-M.jpg|">
             </div>
             <div class="col-8 justify-content-end">
@@ -19,7 +19,7 @@
                         <span>Title: </span>
                         <span class="text" th:text="${book.title}"></span>
                     </p>
-                    <p th:if="${book.desc != 'NOT FOUND'}">
+                    <p th:if="${book.description != 'NOT FOUND'}">
                         <span class="h5 text">Description: </span>
                         No description found</p>
                     <p th:if = "${book.excerpt != 'NOT FOUND'}"><span class="h5 text">

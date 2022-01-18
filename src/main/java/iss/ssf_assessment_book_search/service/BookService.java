@@ -81,7 +81,8 @@ public class BookService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-           return null;
+
+           return new BookModel();
     }
 
     private BookModel convertToBook(JsonObject obj) {

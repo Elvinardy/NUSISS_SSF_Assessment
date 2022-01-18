@@ -12,7 +12,7 @@
         <h1>Search result for <code th:text="${title}"></code> </h1>
             <ul>
                 <li th:each="book : ${results}">
-                <a th:href="${book.bookKey}" th:text="${book.title}"></a>
+                <a th:href="|/book/${book.bookKey}|" th:text="${book.title}"></a>
                 </li>
             </ul>
             <a href="/" class="btn btn-dark m-2" role="button">Back to home</a>

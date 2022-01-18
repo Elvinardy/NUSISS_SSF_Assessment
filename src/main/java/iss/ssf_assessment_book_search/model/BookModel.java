@@ -78,7 +78,7 @@ public class BookModel {
 
     public static BookModel create(JsonObject obj) {
        final BookModel bm = new BookModel();
-       bm.setBookKey(obj.getString("key"));
+       bm.setBookKey(obj.getString("key").replace("/works/",""));
        bm.setTitle(obj.getString("title"));
        return bm;
         }
